@@ -5,25 +5,25 @@ const orm = require("../config/orm")
 // * Export at the end of the `burger.js` file.
 
 const burger = {
-    all: function(cb){
+    selectAll: function(cb){
         orm.all("burgers", res=>{
             cd(res);
         });
     },
 
-    create: function (cols, vals, cb){
+    insertOne: function (cols, vals, cb){
         orm.create("burgers", cols, vals, (res)=>{
             cb(res);
         })
     }, 
 
-    update: function (objColVals, condition, cb){
+    updateOne: function (objColVals, condition, cb){
         orm.update("burgers", ObjColVals, condition, (res)=>{
             cb(res);
         });
     }, 
 
-    delete:function (condition, cb){
+    deleteOne:function (condition, cb){
         orm.delete("burgers", condition, (res)=>{
             cb(res);
         });
