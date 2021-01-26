@@ -7,7 +7,8 @@ const burger = require ("../models/burger");//importing to use database function
 router.get("/", (req,res)=>{
     burger.selectAll(data=>{
         const hbarsObj = {
-            burger: data
+            burgers: data
+            //why burgers?
         };
         console.log(hbarsObj);
         res.render("index", hbarsObj);
@@ -36,16 +37,5 @@ router.put("/api/burgers/:id", (req,res)=>{
     });
 });
 
-router.delete("/api/burgers/:id", (req,res)=>{
-    const condition = `id = ${req.params.id}`;
-    console.log("condition", condition);
-    burger.deleteOne(condition, (result)=>{
-        if (result.changedRows === 0){
-            return res.status(404).end();
-        }else{
-            res.status(200).end();
-        }
-    })
-})
 
 module.exports = router
