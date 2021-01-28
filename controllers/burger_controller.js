@@ -10,7 +10,8 @@ router.get("/", (req,res)=>{
             burgers: data
             //why burgers?
         };
-        console.log(hbarsObj);
+        console.log(hbarsObj, "handlebarsObj");
+
         res.render("index", hbarsObj);
     })
 }); 
@@ -21,6 +22,7 @@ router.post ("/api/burgers", (req,res)=>{
     [rep.body.burger_name, req.body.devoured], 
     (result)=>{
         res.json({id: result.insertId});//sends back the new burger id.
+        console.log(result, "result");
     });
 });
 
